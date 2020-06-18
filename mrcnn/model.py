@@ -2307,6 +2307,7 @@ class MaskRCNN():
             augmentation. A source is string that identifies a dataset and is
             defined in the Dataset class.
         """
+	tf.compat.v1.disable_eager_execution()
         assert self.mode == "training", "Create model in training mode."
 
         # Pre-defined layer regular expressions
