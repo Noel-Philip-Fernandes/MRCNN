@@ -2307,7 +2307,7 @@ class MaskRCNN():
             augmentation. A source is string that identifies a dataset and is
             defined in the Dataset class.
         """
-	tf.compat.v1.disable_eager_execution()
+	
         assert self.mode == "training", "Create model in training mode."
 
         # Pre-defined layer regular expressions
@@ -2352,6 +2352,7 @@ class MaskRCNN():
         log("\nStarting at epoch {}. LR={}\n".format(self.epoch, learning_rate))
         log("Checkpoint Path: {}".format(self.checkpoint_path))
         self.set_trainable(layers)
+	tf.compat.v1.disable_eager_execution()
         self.compile(learning_rate, self.config.LEARNING_MOMENTUM)
 
         # Work-around for Windows: Keras fails on Windows when using
